@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --box-size: 20em;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(0, 190, 190);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: .2em;
+    border: .2em solid white;
+    background-color: white;
+    height: var(--box-size);
+    width: var(--box-size);
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+section:hover {
+    background-color: red;
+}
