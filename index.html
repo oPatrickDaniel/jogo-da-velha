@@ -6,22 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/style.css">
-    <script src="./script/script.js" defer></script>
-    <title>Jogo Da Velha</title>
+    <script src="./scripts/interface.js" defer></script>
+    <script src="./scripts/game.js" defer></script>
 </head>
 
 <body>
+    <header>
+        <h1>JOGO DA VELHA</h1>
+        <div class="scoreboard">
+            <div class="player_move background_yellow">jogador 1</div>
+            <div id="score">0 X 0</div>
+            <div class="player_move">jogador 2</div>
+        </div>
+    </header>
     <main class="container">
-        <section onclick="quadrado_clicado(this)" id="sec1" class="sections">0</section>
-        <section onclick="quadrado_clicado(this)" id="sec2" class="sections">1</section>
-        <section onclick="quadrado_clicado(this)" id="sec3" class="sections">2</section>
-        <section onclick="quadrado_clicado(this)" id="sec4" class="sections">3</section>
-        <section onclick="quadrado_clicado(this)" id="sec5" class="sections">4</section>
-        <section onclick="quadrado_clicado(this)" id="sec6" class="sections">5</section>
-        <section onclick="quadrado_clicado(this)" id="sec7" class="sections">6</section>
-        <section onclick="quadrado_clicado(this)" id="sec8" class="sections">7</section>
-        <section onclick="quadrado_clicado(this)" id="sec9" class="sections">8</section>
+        <section id="0" class="square"></section>
+        <section id="1" class="square"></section>
+        <section id="2" class="square"></section>
+        <section id="3" class="square"></section>
+        <section id="4" class="square"></section>
+        <section id="5" class="square"></section>
+        <section id="6" class="square"></section>
+        <section id="7" class="square"></section>
+        <section id="8" class="square"></section>
     </main>
+    <button id="reset_button" class="display_none">jogar novamente</button>
 </body>
 
 </html>

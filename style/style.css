@@ -1,12 +1,30 @@
+/* resetting css */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* colors */
+
 :root {
-    --box-size: 20em;
+    --square_size: 20em;
+    --blue: #84b6f4;
+    --yellow: #fdfd96;
+    --yellow2: #fafa6a;
 }
+
+/* style for js */
+
+.display_none {
+    opacity: 0;
+}
+
+.background_yellow {
+    background-color: var(--yellow2);
+}
+
+/* body */
 
 body {
     display: flex;
@@ -14,27 +32,72 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: rgb(0, 190, 190);
+    background-color: var(--blue);
     font-family: 'Segoe UI', Tahoma, sans-serif;
 }
 
-.container {
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    gap: .2em;
-    border: .2em solid white;
-    background-color: white;
-    height: var(--box-size);
-    width: var(--box-size);
+header {
+    text-align: center;
 }
 
-section {
+header h1 {
+    color: var(--yellow);
+    text-shadow: rgb(114, 114, 114) 0.1em 0.1em 0.2em;
+}
+
+.scoreboard {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    width: var(--square_size);
+    background-color: gainsboro;
+    border-radius: 1em;
+}
+
+.scoreboard div {
+    font-weight: 600;
+    padding: .5em 1.5em;
+    border-radius: 1em;
+}
+
+.scoreboard .player_wins {
+    padding: 0;
+}
+
+.container {
+    margin-top: 1.5em;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: .3em;
+    height: var(--square_size);
+    width: var(--square_size);
+}
+
+.container section {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
+    background-color: var(--yellow);
 }
 
-section:hover {
-    background-color: red;
+.container section img {
+    width: 70%;
+}
+
+.container section:hover {
+    background-color: var(--yellow2);
+}
+
+button {
+    margin-top: 1em;
+    padding: .8em;
+    border: none;
+    border-radius: .6em;
+    background-color: var(--yellow);
+    font-size: 1em;
+    font-weight: 600;
+}
+
+button:hover {
+    background-color: var(--yellow2);
 }
