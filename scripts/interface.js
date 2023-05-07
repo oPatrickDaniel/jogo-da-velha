@@ -1,60 +1,25 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-    // adiciona evento click em todos os quadrados do jogo;
+    // adiciona eventos de click no tabuleiro;
     let squares = document.querySelectorAll('.square');
+    let reset_button = document.getElementById('reset_button');
     squares.forEach((square) => {
         square.addEventListener('click', player_click);
     })
-    // adiciona evento click no botão de reset;
-    let reset_button = document.getElementById('reset_button');
     reset_button.addEventListener('click', reset_game);
 })
 
 function player_click(event) {
-    // indica onde o player clicou;
+    // função do evento click (linha: )
     let square = event.target;
     let position = square.id;
 
     if (player_move(position)) {
         setTimeout(() => {
-            //acionado quando o joga acaba;
             print_player_winner();
         }, 10);
     }
     update_board(position);
-}
-
-function update_board(position) {
-    // atualiza os símbolos no tabuleiro;
-    let square = document.getElementById(position.toString());
-    let symbol = board[position];
-    square.innerHTML = '<img src="./images/' + symbol + '.png" alt="' + symbol + '">';
-    update_player_turn();
-}
-
-function update_player_turn() {
-    // atualiza o jogador da rodada;
-    let player_move = document.querySelectorAll('.player_move');
-
-    player_move.forEach((move) => {
-        move.classList.remove('background_yellow');
-    })
-    player_move[player_turn].classList.add('background_yellow');
-}
-
-function print_player_winner() {
-    //  imprime qual jogador ganhou a partida;
-    let score = document.getElementById('score');
-    if (player_turn === 0) {
-        wins_player1++;
-        score.innerText = wins_player1 + ' X ' + wins_player2;
-    } else {
-        wins_player2++;
-        score.innerText = wins_player1 + ' X ' + wins_player2;
-    }
-    // libera o botão de jogar novamente;
-    let button_reset = document.getElementById('reset_button');
-    button_reset.classList.remove('display_none');
 }
 
 function reset_game() {
@@ -65,12 +30,62 @@ function reset_game() {
     // limpa os dados do tabuleiro;
     let squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
-        ;
         square.innerHTML = '';
     })
 
-    // remove novamente o botão de reiniciar jogo;
-    let button_reset = document.getElementById('reset_button');
-    button_reset.classList.add('display_none');
+    // remove o botão de jogar novamente;
+    add_button()
+
+    // indica o novo player da rodada;
+    update_player_turn()
 }
+
+function update_player_turn() {
+    // atualiza o jogador da rodada;
+    let player_move = document.querySelectorAll('.player_move');
+
+    if (!player_win()) {
+        player_move.forEach((move) => {
+            move.classList.remove('background_yellow');
+        })
+        player_move[player_turn].classList.add('background_yellow');
+    }
+}
+
+function update_board(position) {
+    // atualiza os símbolos no tabuleiro;
+    let square = document.getElementById(position.toString());
+    let symbol = board[position];
+    square.innerHTML = '<img src="./images/' + symbol + '.png" alt="' + symbol + '">';
+    update_player_turn();
+}
+
+function add_button() {
+    // adiciona ou remove a botão de jogar novamente
+    let button_reset = document.getElementById('reset_button');
+    if (button_reset.classList.contains("display_none")) {
+        button_reset.classList.remove('display_none');
+    } else {
+        button_reset.classList.add('display_none');
+    }
+}
+
+function print_player_winner() {
+    //  imprime qual jogador ganhou a partida;
+    let score = document.getElementById('score');
+    if (player_turn === 0) {
+        wins_player1++;
+    } else {
+        wins_player2++;
+    }
+    score.innerText = wins_player1 + ' X ' + wins_player2;
+    // escolhe quem começa jogando a proxima rodada;
+    rounds_played++
+    current_round()
+    // libera o botão de jogar novamente;
+    add_button()
+    console.log(rounds_played)
+}
+
+
 

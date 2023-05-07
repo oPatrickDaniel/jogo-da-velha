@@ -1,3 +1,7 @@
+/* importing font */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap');
+
 /* resetting css */
 * {
     margin: 0;
@@ -12,12 +16,13 @@
     --blue: #84b6f4;
     --yellow: #fdfd96;
     --yellow2: #fafa6a;
+    --gray: #dcdcdc;
 }
 
 /* style for js */
 
 .display_none {
-    opacity: 0;
+    visibility: hidden;
 }
 
 .background_yellow {
@@ -33,7 +38,7 @@ body {
     align-items: center;
     height: 100vh;
     background-color: var(--blue);
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 header {
@@ -45,23 +50,24 @@ header h1 {
     text-shadow: rgb(114, 114, 114) 0.1em 0.1em 0.2em;
 }
 
-.scoreboard {
+header .scoreboard {
     margin-top: 1em;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 40% 1fr;
+    align-items: center;
     width: var(--square_size);
-    background-color: gainsboro;
+    background-color: var(--gray);
     border-radius: 1em;
 }
 
-.scoreboard div {
+header .scoreboard div {
     font-weight: 600;
-    padding: .5em 1.5em;
+    padding: .8em .5em;
     border-radius: 1em;
 }
 
-.scoreboard .player_wins {
-    padding: 0;
+header .scoreboard #score {
+    font-weight: 700;
 }
 
 .container {
@@ -78,6 +84,7 @@ header h1 {
     justify-content: center;
     align-items: center;
     background-color: var(--yellow);
+    border-radius: .5em;
 }
 
 .container section img {
@@ -93,7 +100,7 @@ button {
     padding: .8em;
     border: none;
     border-radius: .6em;
-    background-color: var(--yellow);
+    background-color: var(--gray);
     font-size: 1em;
     font-weight: 600;
 }

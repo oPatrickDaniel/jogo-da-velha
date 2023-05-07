@@ -5,7 +5,8 @@ let board = ["", "", "", "", "", "", "", "", ""];
 let player_turn = 0;
 let wins_player1 = 0;
 let wins_player2 = 0;
-let symbols = ["circle", "cross"];
+let rounds_played = 1;
+let symbols = ["circle", "cross"]
 let game_over = false;
 
 let winning_positions = [
@@ -28,6 +29,7 @@ function player_move(position) {
     if (board[position] === "") {
 
         board[position] = symbols[player_turn];
+        game_over = player_win();
 
         if (!game_over) {
             if (player_turn == 0) {
@@ -36,7 +38,6 @@ function player_move(position) {
                 player_turn = 0;
             }
         }
-        game_over = player_win();
     }
     return game_over;
 }
@@ -52,9 +53,15 @@ function player_win() {
         if (board[position1] === board[position2] &&
             board[position1] === board[position3] &&
             board[position1] != 0) {
-
             return true;
         }
     }
 }
 
+function current_round() {
+    if (rounds_played % 2 === 0) {
+        player_turn = 1;
+    } else {
+        player_turn = 0;
+    }
+}
