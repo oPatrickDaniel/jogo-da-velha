@@ -46,9 +46,8 @@ function update_player_turn() {
 
     if (!player_win()) {
         player_move.forEach((move) => {
-            move.classList.remove('background_yellow');
+            move.classList.toggle("background_yellow")
         })
-        player_move[player_turn].classList.add('background_yellow');
     }
 }
 
@@ -63,11 +62,7 @@ function update_board(position) {
 function add_button() {
     // adiciona ou remove a botão de jogar novamente
     let button_reset = document.getElementById('reset_button');
-    if (button_reset.classList.contains("display_none")) {
-        button_reset.classList.remove('display_none');
-    } else {
-        button_reset.classList.add('display_none');
-    }
+    button_reset.classList.toggle('display_none');
 }
 
 function print_player_winner() {
