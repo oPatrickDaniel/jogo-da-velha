@@ -12,7 +12,7 @@
 /* colors */
 
 :root {
-    --gradiente: linear-gradient(to right, #fff, #84b6f4);
+    --gradiente: linear-gradient(#2381f3, #84b6f4);
     --square_size: 20em;
     --yellow: #fdfd96;
     --yellow2: #fafa6a;
@@ -37,7 +37,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(#2381f3, #84b6f4);
+    background-image: var(--gradiente);
     font-family: 'Roboto Mono', monospace;
 }
 
