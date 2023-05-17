@@ -34,7 +34,7 @@ function reset_game() {
     })
 
     // remove o botão de jogar novamente;
-    add_button()
+    button_play_again()
 
     // indica o novo player da rodada;
     update_player_turn()
@@ -59,7 +59,7 @@ function update_board(position) {
     update_player_turn();
 }
 
-function add_button() {
+function button_play_again() {
     // adiciona ou remove a botão de jogar novamente
     let button_reset = document.getElementById('reset_button');
     button_reset.classList.toggle('display_none');
@@ -78,7 +78,7 @@ function print_player_winner() {
     rounds_played++
     current_round()
     // libera o botão de jogar novamente;
-    add_button()
+    button_play_again()
     console.log(rounds_played)
 }
 
