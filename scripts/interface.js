@@ -26,6 +26,8 @@ function reset_game() {
     // reinicia os dados do tabuleiro;
     board = ["", "", "", "", "", "", "", "", ""];
     game_over = false;
+    draw = false;
+    moves = 0;
 
     // limpa os dados do tabuleiro;
     let squares = document.querySelectorAll('.square');
@@ -68,18 +70,22 @@ function button_play_again() {
 function print_player_winner() {
     //  imprime qual jogador ganhou a partida;
     let score = document.getElementById('score');
-    if (player_turn === 0) {
-        wins_player1++;
-    } else {
-        wins_player2++;
+
+    if (!draw) {
+        console.log("empate")
+        if (player_turn === 0) {
+            wins_player1++;
+        } else {
+            wins_player2++;
+        }
     }
+
     score.innerText = wins_player1 + ' X ' + wins_player2;
     // escolhe quem começa jogando a proxima rodada;
     rounds_played++
     current_round()
     // libera o botão de jogar novamente;
     button_play_again()
-    console.log(rounds_played)
 }
 
 
